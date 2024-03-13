@@ -1,0 +1,38 @@
+import tkinter as tk
+from tkinter import messagebox
+from PIL import ImageTk, Image
+
+class FitnessApp:
+    def __init__(self, master):
+        self.master = master
+        self.master.title("FitTrack - Your Fitness Companion")
+        
+        # Load images
+        self.logo_image = Image.open("logo.png")  # Replace "logo.png" with your actual logo image path
+        self.logo_image = self.logo_image.resize((200, 200), Image.ANTIALIAS)
+        self.logo_photo = ImageTk.PhotoImage(self.logo_image)
+
+        # Create GUI elements
+        self.logo_label = tk.Label(master, image=self.logo_photo)
+        self.logo_label.pack()
+
+        self.welcome_label = tk.Label(master, text="Welcome to FitTrack!", font=("Arial", 18))
+        self.welcome_label.pack()
+
+        self.instructions_label = tk.Label(master, text="Start tracking your fitness today.", font=("Arial", 12))
+        self.instructions_label.pack()
+
+        self.start_button = tk.Button(master, text="Start Tracking", command=self.start_tracking)
+        self.start_button.pack()
+
+    def start_tracking(self):
+        # Add functionality to start tracking fitness
+        messagebox.showinfo("FitTrack", "Tracking started. Let's get fit!")
+
+def main():
+    root = tk.Tk()
+    app = FitnessApp(root)
+    root.mainloop()
+
+if __name__ == "__main__":
+    main()
